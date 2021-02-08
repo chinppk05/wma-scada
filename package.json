@@ -5,17 +5,17 @@
   "main": "test_heroku.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node test_heroku.js"
+    "start": "node sample.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jimp": "^0.16.1"
   },
   "engines": {
-  "node": "14.15.4",
-  "npm": "6.14.10"
+    "node": "14.15.4",
+    "npm": "6.14.10"
   }
-  
 }
