@@ -13,7 +13,70 @@
         </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover,
+        .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .overlay a {
+                font-size: 20px
+            }
+
+            .overlay .closebtn {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+        }
+    </style>
+
+    
     <script>
+
+
         function initialize() {
             var mapOptions = {
                 center: new google.maps.LatLng(13.724618, 100.584682),
@@ -64,7 +127,7 @@
                 title: 'บางปลา2',
                 icon: image,
             });
-            
+
             var marker_Bangbuathong = new google.maps.Marker({
                 position: new google.maps.LatLng(13.9580, 100.3748),
                 url: 'http://164.115.33.34/#/overview3?id=UYrLyRqTPMndKw7',
@@ -72,7 +135,7 @@
                 title: 'บางบัวทอง',
                 icon: image,
             });
-            
+
             var marker_Hulong = new google.maps.Marker({
                 position: new google.maps.LatLng(8.334804, 100.1914),
                 url: 'http://164.115.33.34/#/overview6?id=ood0py6UcRIpttA',
@@ -80,7 +143,7 @@
                 title: 'หูล่อง',
                 icon: image,
             });
-            
+
             var marker_Rawai = new google.maps.Marker({
                 position: new google.maps.LatLng(7.7799, 98.3114),
                 url: 'http://164.115.33.34/#/overview3?id=LQxyGC1akmltuml',
@@ -88,7 +151,7 @@
                 title: 'ราไวย์',
                 icon: image,
             });
-            
+
             var marker_Singburi = new google.maps.Marker({
                 position: new google.maps.LatLng(14.865746, 100.425427),
                 url: ' http://164.115.33.34/#/overview1?id=PP8iqiTmVLOlZDG',
@@ -96,7 +159,7 @@
                 title: 'สิงห์บุรี',
                 icon: image,
             });
-            
+
             var marker_Bangsaen = new google.maps.Marker({
                 position: new google.maps.LatLng(13.29910, 100.921861),
                 url: 'http://164.115.33.34/#/login?id=NgWihAX2mK8KtpUzU90p',
@@ -104,7 +167,7 @@
                 title: 'บางแสน',
                 icon: image,
             });
-            
+
             var marker_Kanlasin = new google.maps.Marker({
                 position: new google.maps.LatLng(16.444741, 103.503695),
                 url: 'http://164.115.33.34/#/login?id=y3YZI8KoEwS9skXKgKq8',
@@ -112,7 +175,7 @@
                 title: 'กาฬสินธุ์',
                 icon: image,
             });
-            
+
             var marker_Paknampran = new google.maps.Marker({
                 position: new google.maps.LatLng(12.3951, 99.9904),
                 url: 'http://164.115.33.34/#/overview4?id=7sh5R83aWlOlfPM',
@@ -120,7 +183,7 @@
                 title: 'ปากน้ำปราณ',
                 icon: image,
             });
-            
+
             var marker_Phromlok = new google.maps.Marker({
                 position: new google.maps.LatLng(8.5276, 99.8235),
                 url: 'http://164.115.33.34/#/overview5?id=6pa82c8tqNT25h',
@@ -128,7 +191,7 @@
                 title: 'พรหมโลก',
                 icon: image,
             });
-            
+
 
 
 
@@ -152,7 +215,7 @@
             google.maps.event.addListener(marker_Bangpla2, 'click', function () {
                 window.location.href = marker_Bangpla2.url;
             });
-            
+
             google.maps.event.addListener(marker_Bangbuathong, 'click', function () {
                 window.location.href = marker_Bangbuathong.url;
             });
@@ -188,7 +251,10 @@
 
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+
+
     </script>
+
 
 </head>
 
@@ -196,17 +262,41 @@
 
 <body style="height: 100%;">
 
-    <!-- Image and text -->
-    <nav class="navbar sticky-top navbar-dark bg-dark py-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="images/logo_wma.png" alt="" width="30" height="24"
-                    class="d-inline-block align-top">
-                แผนที่แสดงตำแหน่ง SCADA ศูนย์บริหารจัดการน้ำ องค์การจัดการน้ำเสียแห่งประเทศไทย
-            </a>
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="#">เทศบาลเมืองสามพราน</a>
+            <a href="#">เทศบาลตำบลบางพลี</a>
+            <a href="#">เทศบาลนครระยอง</a>
+            <a href="#">เทศบาลเมืองปู่เจ้าสมิงพราย</a>
+            <a href="#">เทศบาลตำบลบางปลา</a>
+            <a href="#">องค์การบริหารส่วนตำบลบางบัวทอง</a>
+            <a href="#">ชุมชนหอยราก-ศรีสมบูรณ์</a>
+            <a href="#">เทศบาลตำบลราไวย์</a>
+            <a href="#">เทศบาลเมืองสิงห์บุรี</a>
+            <a href="#">เทศบาลเมืองแสนสุข</a>
+            <a href="#">เทศบาลเมืองกาฬสินธุ์</a>
+            <a href="#">เทศบาลตำบลปากน้ำปราณ</a>
+            <a href="#">เทศบาลตำบลพรหมโลก</a>
         </div>
+    </div>
+
+    <!-- Image and text -->
+    <nav class=" sticky-top navbar navbar-dark bg-dark py-3 ">
+        <span style="font-size:18px;cursor:pointer ;color: rgb(255, 255, 255);" onclick="openNav()">&#9776;
+            WMA SCADA</span>
     </nav>
 
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
 
 
 
