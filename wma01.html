@@ -192,6 +192,22 @@
                 icon: image,
             });
 
+            var marker_Chalong = new google.maps.Marker({
+                position: new google.maps.LatLng(7.8461902, 98.3369248),
+                url: 'http://3.7.199.124/#!/overview/chalong',
+                map: map,
+                title: 'ฉลอง',
+                icon: image,
+            });
+
+            var marker_Kamala = new google.maps.Marker({
+                position: new google.maps.LatLng(7.952102, 98.282784),
+                url: 'http://3.7.199.124/#!/overview/kamala',
+                map: map,
+                title: 'กมลา',
+                icon: image,
+            });
+
 
 
 
@@ -248,6 +264,14 @@
                 window.location.href = marker_Phromlok.url;
             });
 
+            google.maps.event.addListener(marker_Chalong, 'click', function () {
+                window.location.href = marker_Chalong.url;
+            });
+
+            google.maps.event.addListener(marker_Kamala, 'click', function () {
+                window.location.href = marker_Kamala.url;
+            });
+
 
         }
         google.maps.event.addDomListener(window, 'load', initialize);
@@ -279,6 +303,8 @@
             <a href="http://164.115.33.34/#/login?id=y3YZI8KoEwS9skXKgKq8">เทศบาลเมืองกาฬสินธุ์</a>
             <a href="http://164.115.33.34/#/overview4?id=7sh5R83aWlOlfPM">เทศบาลตำบลปากน้ำปราณ</a>
             <a href="http://164.115.33.34/#/overview5?id=6pa82c8tqNT25hW">เทศบาลตำบลพรหมโลก</a>
+            <a href="http://164.115.33.34/#/overview5?id=6pa82c8tqNT25hW">เทศบาลตำบลฉลอง</a>
+            <a href="http://164.115.33.34/#/overview5?id=6pa82c8tqNT25hW">องค์การบริหารส่วนตำบลกมลา</a>
         </div>
     </div>
 
